@@ -1,0 +1,64 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: skyblue;">
+    <a class="navbar-brand" [routerLink]="['/']">Share Your Story</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02"
+        aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbar">
+
+        <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+            <li class="nav-item">
+                <a class="nav-link" href="#"><i class="fas fa-home"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/friend']"><i class="fas fa-users"></i></a>
+            </li>
+            <li class="nav-item">
+                <a class="nav-link" [routerLink]="['/tag']"><i class="fas fa-compass"></i></a>
+              </li>
+        </ul>
+
+    </div>
+</nav>
+
+<div class="container" style="margin-top:5%;margin-bottom:5%;">
+    <div class="row justify-content-center">
+        <div class="card m-5" style="width:60%;">
+            <div class="card-header">
+                <img src={{post.owner.picture}} style="width: 20%;" class="rounded-circle">
+                <a [routerLink]="['/user'+'/'+post.owner.id]"> {{post.owner.firstName}} {{post.owner.lastName}}</a>
+            </div>
+            <img src={{post.image}} style="width: 100%;" class="card-img-top">
+            <div class="card-body">
+                <div class="card-title">
+                    {{post.text}}<br>
+                    <i class="fas fa-heart"></i> {{post.likes}} Likes<br>
+                    <a href>{{post.link}}</a> <br>
+                    <div style="color: grey;">{{post.publishDate}}</div>
+
+                </div>
+                <div class="card-text">
+                    <button class="tagbox" *ngFor='let tag of post.tags'
+                        >#{{tag}}</button>
+                </div>
+                <hr>
+                Comment : <br>
+                <ul class="list-group list-group-flush" *ngFor="let comment of comments.data">
+                    <li class="list-group-item" style="padding:0px;">
+                        <div class="card-header">
+                            <img src={{comment.owner.picture}} style="width: 10%;" class="rounded-circle">
+                            <a [routerLink]="['/user'+'/'+comment.owner.id]"> {{comment.owner.firstName}}
+                                {{comment.owner.lastName}}</a> - <Strong> {{comment.message}}</Strong>
+                        </div>
+
+                    </li>
+                </ul>
+
+            </div>
+
+        </div>
+    </div>
+
+
+</div>

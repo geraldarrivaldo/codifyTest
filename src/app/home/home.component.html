@@ -1,0 +1,48 @@
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: skyblue">
+  <a class="navbar-brand" [routerLink]="['/']">Share Your Story</a>
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar"
+    aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+    <span class="fas fa-caret-square-down"></span>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbar">
+
+    <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+      <li class="nav-item active">
+        <a class="nav-link" href="#"><i class="fas fa-home"></i><span class="sr-only">(current)</span></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/friend']"><i  class="fas fa-users" ></i></a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/tag']"><i class="fas fa-compass"></i></a>
+      </li>
+    </ul>
+
+  </div>
+</nav>
+<div class="row itemsBlock">
+  <div *ngFor="let post of posts.data ; let i = index" class="col-sm-12 col-lg-6" style="margin-bottom: 30px; margin-top: 5px; ">
+    <div  class="card h-100 mx-auto" >
+      <div class="card-header" >
+        <img src={{post.owner.picture}} style="width: 10%;" class="rounded-circle">
+        <a [routerLink]="['/user'+'/'+post.owner.id]"> {{post.owner.firstName}} {{post.owner.lastName}}</a>
+      </div>
+      <img src={{post.image}} style="width: 100%;height: 50%;object-fit: cover;" class="card-img-top">
+      <div class="card-body">
+        <div class="card-title">
+          {{post.text}}<br>
+          <i class="fas fa-heart"></i> {{post.likes}} Likes<br>
+          <a href>{{post.link}}</a> <br><div style="color: grey;">{{post.publishDate}}</div>
+          <hr>
+        </div>
+        <div class="card-text">
+          <button [routerLink]="['/tagpost'+'/'+tag]" class="tagbox" *ngFor='let tag of posts.data[i].tags'
+          >#{{tag}}</button>
+        </div>
+      </div>
+      <button class="btn primary-btn" (click)="postPageDetail(post.id)">View Comment</button>
+
+    </div>
+  </div>
+</div>

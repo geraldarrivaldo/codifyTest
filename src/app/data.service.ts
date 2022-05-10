@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { DataPost, Post, Tag } from './models/post.model';
 import { Comment, DetailUser, User } from './models/user.model';
 
-const APP_ID = '600a7ea7bd860a6bae56cfcd'
+const APP_ID = '6279e8219f585c97550d4807'
 @Injectable({
   providedIn: 'root'
 })

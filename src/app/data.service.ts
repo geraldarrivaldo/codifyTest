@@ -8,9 +8,9 @@ const APP_ID = '600a7ea7bd860a6bae56cfcd'
   providedIn: 'root'
 })
 export class DataService {
-  private post: string='https://dummyapi.io/data/api/post';
-  private user: string='https://dummyapi.io/data/api/user';
-  private tag: string="https://dummyapi.io/data/api/tag";
+  private post: string='https://dummyapi.io/data/v1/api/post';
+  private user: string='https://dummyapi.io/data/v1/api/user';
+  private tag: string="https://dummyapi.io/data/v1/api/tag";
   constructor(private http: HttpClient) {}
 
   getPosts(){
